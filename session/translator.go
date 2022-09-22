@@ -62,6 +62,8 @@ func (t *translator) translatePacket(pk packet.Packet) {
 		for i := range pk.EntityLinks {
 			pk.EntityLinks[i] = t.translateEntityLink(pk.EntityLinks[i])
 		}
+	case *packet.UpdateAbilities:
+		pk.AbilityData.EntityUniqueID = t.translateUniqueID(pk.AbilityData.EntityUniqueID)
 	case *packet.AddVolumeEntity:
 		pk.EntityRuntimeID = t.translateRuntimeID(pk.EntityRuntimeID)
 	case *packet.AdventureSettings:
